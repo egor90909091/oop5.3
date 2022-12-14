@@ -89,7 +89,7 @@ void func3(Base &a)
 	cout << "functuion3 base&a\n";
 }
 Base out1() {
-	cout<<"out1\n";
+	cout << "out1\n";
 	Base b;
 	return b;
 
@@ -99,7 +99,7 @@ Base out1() {
 Base out2() {
 	cout << "out2\n";
 
-	Base *a = new Base();
+	Base* a = new Base();
 	return *a;
 
 }
@@ -114,8 +114,8 @@ Base* out3() {
 
 //утечка
 Base* out4() {
-		Base *out4 = new Base();
-		return out4;
+	Base* out4 = new Base();
+	return out4;
 
 }
 Base& out5() {
@@ -129,8 +129,8 @@ Base& out6() {
 	return *out6;
 
 
-}
 
+}
 
 int main(){
 
@@ -161,7 +161,7 @@ int main(){
 	Desc d;
 	Desc* ptr_d = new Desc;
 
-	cout << endl<< "#1" << endl;
+	cout << endl << "#1" << endl;
 	func1(d);
 	cout << endl << "#2" << endl;
 	func2(&d);
@@ -193,9 +193,9 @@ int main(){
 	delete ptr_d;
 	delete ptr;
 
-	cout << endl << "end of &*" << endl<< endl;
-	//cоздаем три файла 
-	
+	cout << endl << "end of &*" << endl << endl;
+
+
 	Base pop;
 	pop = out1();
 
@@ -211,33 +211,6 @@ int main(){
 
 
 	Base& pop6 = out6();
-
-
-	{
-		{
-			unique_ptr<Base> ptr1(new Base());
-			function1(move(ptr1));
-			cout << endl;
-		}
-
-		
-
-		{
-			shared_ptr<Base> shared1 = make_shared<Base>(new Base());
-
-			function3(shared1);
-			cout << endl << endl;
-		}
-
-
-		shared_ptr<Base> shared = make_shared<Base>(new Base());
-		{
-			shared_ptr<Base> TestPtrWillDIe(new Base());
-			TestPtrWillDIe = shared;
-
-		}
-
-	}
 
 }
 
