@@ -212,5 +212,30 @@ int main(){
 
 	Base& pop6 = out6();
 
+	{
+		{
+			unique_ptr<Base> ptr1(new Base());
+			function1(move(ptr1));
+			cout << endl;
+		}
+
+
+
+		{
+			shared_ptr<Base> shared1 = make_shared<Base>(new Base());
+
+			function3(shared1);
+			cout << endl << endl;
+		}
+
+
+		shared_ptr<Base> shared = make_shared<Base>(new Base());
+		{
+			shared_ptr<Base> TestPtrWillDIe(new Base());
+			TestPtrWillDIe = shared;
+
+		}
+
+	}
 }
 
